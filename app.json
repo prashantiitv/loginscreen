@@ -1,26 +1,30 @@
 {
   "expo": {
-    "name": "loginscreen",
+    "name": "LoginScreen",
     "slug": "loginscreen",
     "version": "1.0.0",
+    "platforms": ["ios", "android", "web"],
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./app/assets/splash.png",
       "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.loginscreen.loginapp",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.loginscreen.loginapp",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": ""
   }
 }

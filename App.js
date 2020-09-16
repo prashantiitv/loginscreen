@@ -1,21 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { AppLoading } from "expo";
+import { createStackNavigator } from "@react-navigation/stack";
+
+import navigationTheme from "./app/navigation/navigationTheme";
+import AppNavigator from "./app/navigation/AppNavigator";
+import AuthNavigator from "./app/navigation/AuthNavigator";
+import AuthContext from "./app/auth/context";
+import authStorage from "./app/auth/storage";
+import { navigationRef } from "./app/navigation/rootNavigation";
 
 export default function App() {
+  const Stack = createStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    //<AuthContext.Provider value={{ user, setUser }}>
+    <NavigationContainer ref={navigationRef} theme={navigationTheme}>
+      <Stack.Navigator
+        initialRouteName="AuthNavigator" //{user ? 'AppNavigator' : 'AuthNavigator'}
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
+        <Stack.Screen name="AppNavigator" component={AppNavigator} />
+      </Stack.Navigator>
+    </NavigationContainer>
+    //</AuthContext.Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
